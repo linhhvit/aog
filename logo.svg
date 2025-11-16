@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512" height="512" viewBox="0 0 512 512"
+     xmlns="http://www.w3.org/2000/svg" role="img" aria-label="AOG champion badge with shield, mirror and team initials">
+  <defs>
+    <!-- Gold gradients -->
+    <linearGradient id="goldLinear" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF8DC"/>
+      <stop offset="30%" stop-color="#FFD966"/>
+      <stop offset="70%" stop-color="#FFC107"/>
+      <stop offset="100%" stop-color="#D9A200"/>
+    </linearGradient>
+
+    <radialGradient id="goldRadial" cx="35%" cy="30%" r="75%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="1"/>
+      <stop offset="20%" stop-color="#FFEFA0" stop-opacity="0.9"/>
+      <stop offset="50%" stop-color="#FFD966" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#C78B00" stop-opacity="1"/>
+    </radialGradient>
+
+    <!-- Dark metallic background gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0a0a"/>
+      <stop offset="50%" stop-color="#0f0f0f"/>
+      <stop offset="100%" stop-color="#141414"/>
+    </linearGradient>
+
+    <!-- Enhanced emboss filter for metal look -->
+    <filter id="emboss" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="2.5" result="blur"/>
+      <feOffset in="blur" dx="0" dy="1.5" result="offset"/>
+      <feSpecularLighting in="blur" surfaceScale="3" specularConstant="0.7" specularExponent="30" result="spec">
+        <fePointLight x="-5000" y="-10000" z="25000"/>
+      </feSpecularLighting>
+      <feComposite in="spec" in2="SourceAlpha" operator="in" result="specOut"/>
+      <feMerge>
+        <feMergeNode in="offset"/>
+        <feMergeNode in="specOut"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Soft interior shadow -->
+    <filter id="innerShadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feOffset dx="0" dy="5" result="off"/>
+      <feGaussianBlur in="off" stdDeviation="7" result="blur"/>
+      <feComposite in="blur" in2="SourceGraphic" operator="out" result="shadowOut"/>
+      <feColorMatrix in="shadowOut" type="matrix"
+                     values="0 0 0 0 0
+                             0 0 0 0 0
+                             0 0 0 0 0
+                             0 0 0 .65 0" />
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Glow effect for text -->
+    <filter id="textGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Outer ring path for team names (larger radius for better visibility) -->
+    <path id="outerPath" d="M 256,60 A 200,200 0 1,1 255.999,60" fill="none"/>
+
+    <!-- Shield gradient -->
+    <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF8E1"/>
+      <stop offset="30%" stop-color="#FFD966"/>
+      <stop offset="70%" stop-color="#FFC107"/>
+      <stop offset="100%" stop-color="#B97A00"/>
+    </linearGradient>
+
+  </defs>
+
+  <!-- Background -->
+  <rect width="512" height="512" rx="0" fill="url(#bgGrad)"/>
+
+  <!-- Outer gold band with enhanced styling -->
+  <g filter="url(#emboss)">
+    <circle cx="256" cy="256" r="200" fill="none" stroke="url(#goldLinear)" stroke-width="14" opacity="0.95"/>
+    <circle cx="256" cy="256" r="180" fill="#0f0f0f"/>
+  </g>
+
+  <!-- Shield (center, behind star) -->
+  <g transform="translate(0,8)">
+    <path d="M256 112
+             C215 112, 180 142, 180 182
+             L180 242
+             C180 297, 220 332, 256 346
+             C292 332, 332 297, 332 242
+             L332 182
+             C332 142, 297 112, 256 112 Z"
+          fill="url(#shieldGrad)"
+          stroke="#C88A00" stroke-width="3.5"
+          filter="url(#innerShadow)"/>
+    <!-- Enhanced shield mirror highlight -->
+    <path d="M230 132 C240 122, 260 120, 270 132 C280 144, 280 172, 270 212 C265 232, 260 242, 240 262"
+          fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="9" stroke-linecap="round" opacity="0.8"/>
+    <path d="M235 142 C245 134, 265 134, 275 142"
+          fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="5" stroke-linecap="round" opacity="0.95"/>
+  </g>
+
+  <!-- Central star (gold, enhanced) -->
+  <g transform="translate(0,-2)">
+    <polygon points="256,152 280,210 342,210 294,248 312,306 256,272 200,306 218,248 170,210 232,210"
+             fill="url(#goldRadial)"
+             stroke="#B77A00" stroke-width="2.5" filter="url(#emboss)"/>
+    <!-- Star inner bevel -->
+    <polygon points="256,164 275,208 322,208 290,236 304,282 256,256 208,282 222,236 190,208 237,208"
+             fill="rgba(255,255,255,0.08)"/>
+  </g>
+
+  <!-- Central AOG lettering (enhanced) -->
+  <g transform="translate(0,8)">
+    <text x="256" y="264" text-anchor="middle" font-family="'Poppins', 'Arial Black', Arial, sans-serif"
+          font-weight="900" font-size="56" fill="url(#goldLinear)" 
+          stroke="#8C5D00" stroke-width="2.5" stroke-linejoin="round"
+          paint-order="stroke" filter="url(#textGlow)" letter-spacing="2">
+      AOG
+    </text>
+    <!-- Enhanced shadow under text -->
+    <text x="256" y="266" text-anchor="middle" font-family="'Poppins', 'Arial Black', Arial, sans-serif"
+          font-weight="900" font-size="56" fill="rgba(0,0,0,0.25)" letter-spacing="2">
+      AOG
+    </text>
+  </g>
+
+  <!-- Decorative inner ring -->
+  <circle cx="256" cy="256" r="150" fill="none" stroke="#CFA65A" stroke-width="7" opacity="0.8"/>
+
+  <!-- Team names on outer ring (FIXED - using proper textPath with better positioning) -->
+  <g font-family="'Poppins', 'Arial Black', Arial, sans-serif" font-weight="800" 
+     fill="#FFD966" stroke="#B97A00" stroke-width="0.5" 
+     style="letter-spacing:3px" filter="url(#textGlow)">
+    
+    <!-- FPT at top (0%) -->
+    <text font-size="24" x="256" y="70" text-anchor="middle" fill="#FFD966" stroke="#B97A00" stroke-width="1">
+      FPT
+    </text>
+    
+    <!-- SGP at top-right (60 degrees) -->
+    <text font-size="24" x="380" y="180" text-anchor="middle" fill="#FFD966" stroke="#B97A00" stroke-width="1">
+      SGP
+    </text>
+    
+    <!-- 1S at right (90 degrees) -->
+    <text font-size="24" x="442" y="256" text-anchor="middle" fill="#FFD966" stroke="#B97A00" stroke-width="1">
+      1S
+    </text>
+    
+    <!-- SPN at bottom-right (120 degrees) -->
+    <text font-size="24" x="380" y="332" text-anchor="middle" fill="#FFD966" stroke="#B97A00" stroke-width="1">
+      SPN
+    </text>
+    
+    <!-- BOX at bottom (180 degrees) -->
+    <text font-size="24" x="256" y="442" text-anchor="middle" fill="#FFD966" stroke="#B97A00" stroke-width="1">
+      BOX
+    </text>
+    
+    <!-- TDT at bottom-left (240 degrees) -->
+    <text font-size="24" x="132" y="332" text-anchor="middle" fill="#FFD966" stroke="#B97A00" stroke-width="1">
+      TDT
+    </text>
+  </g>
+
+  <!-- Alternative: Using textPath for circular placement (commented out, using positioned text above) -->
+  <!-- Uncomment below if you prefer circular text path -->
+  <!--
+  <g font-family="'Poppins', 'Arial Black', Arial, sans-serif" font-weight="800" 
+     fill="#FFD966" stroke="#B97A00" stroke-width="1" 
+     style="letter-spacing:3px" filter="url(#textGlow)">
+    <text font-size="24">
+      <textPath href="#outerPath" startOffset="0%" text-anchor="middle" dominant-baseline="middle">FPT</textPath>
+    </text>
+    <text font-size="24">
+      <textPath href="#outerPath" startOffset="16.666%" text-anchor="middle" dominant-baseline="middle">SGP</textPath>
+    </text>
+    <text font-size="24">
+      <textPath href="#outerPath" startOffset="33.333%" text-anchor="middle" dominant-baseline="middle">1S</textPath>
+    </text>
+    <text font-size="24">
+      <textPath href="#outerPath" startOffset="50%" text-anchor="middle" dominant-baseline="middle">SPN</textPath>
+    </text>
+    <text font-size="24">
+      <textPath href="#outerPath" startOffset="66.666%" text-anchor="middle" dominant-baseline="middle">BOX</textPath>
+    </text>
+    <text font-size="24">
+      <textPath href="#outerPath" startOffset="83.333%" text-anchor="middle" dominant-baseline="middle">TDT</textPath>
+    </text>
+  </g>
+  -->
+
+  <!-- Enhanced decorative strokes -->
+  <circle cx="256" cy="256" r="200" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="2"/>
+  <circle cx="256" cy="256" r="172" fill="none" stroke="rgba(0,0,0,0.3)" stroke-width="2"/>
+
+  <!-- Subtle corner accents -->
+  <circle cx="80" cy="80" r="3" fill="#FFD966" opacity="0.4"/>
+  <circle cx="432" cy="80" r="3" fill="#FFD966" opacity="0.4"/>
+  <circle cx="80" cy="432" r="3" fill="#FFD966" opacity="0.4"/>
+  <circle cx="432" cy="432" r="3" fill="#FFD966" opacity="0.4"/>
+
+</svg>
